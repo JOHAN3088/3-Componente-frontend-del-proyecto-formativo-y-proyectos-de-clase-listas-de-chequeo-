@@ -1,8 +1,8 @@
 import axios from "axios";// me permite hacer la comunicacion con el backend
 //creamos la clase
-export class mediservices{
+export class MediServices{
 //variable donde tengo la url de la conexion y devo validar el nombre en el archivo controlador
-    baseUrl="http//localhost:8080/medicamentos"
+    baseUrl="http://localhost:8080/medicamentos"
 
     //metodo para mostrar toda la informacion
     getAll(){
@@ -13,8 +13,9 @@ export class mediservices{
     save(medicamentos){
         return axios.post(this.baseUrl + "/nuevo",medicamentos).then(res => res.data);
     }
+   
     //eliminar datos
-    delete(){
-        return axios.get(this.baseUrl + "/mostrar/"+ idcodigo ).then(res => res.data);
+    delete(idcodigo){
+        return axios.post(this.baseUrl + "/medi/" + idcodigo).then(res => res.data);
     }
 }
